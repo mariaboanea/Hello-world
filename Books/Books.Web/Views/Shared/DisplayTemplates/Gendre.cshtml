@@ -1,0 +1,15 @@
+﻿@using Books.Entities
+@using System.ComponentModel.DataAnnotations
+
+@{ 
+    var display = typeof(Gendre).GetEnumName((int?)Model);
+
+    var attr = typeof(Gendre).GetField(display).GetCustomAttributes(inherit: false).OfType<DisplayAttribute>().FirstOrDefault();
+    if(attr != null)
+    {
+        display = attr.GetName();
+    }
+
+}
+
+@Html.DisplayName(display)
